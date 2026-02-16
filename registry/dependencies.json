@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-02-16",
+  "description": "Skill dependency graph",
+  "dependencies": {
+    "team": {
+      "depends_on": ["interview-skills", "github-kb"],
+      "depended_by": []
+    },
+    "interview-skills": {
+      "depends_on": [],
+      "depended_by": ["team"]
+    },
+    "github-kb": {
+      "depends_on": [],
+      "depended_by": ["team"]
+    },
+    "pptx": {
+      "depends_on": [],
+      "depended_by": []
+    },
+    "skill-creator": {
+      "depends_on": [],
+      "depended_by": []
+    }
+  },
+  "topology": {
+    "layers": [
+      ["pptx", "interview-skills", "github-kb", "skill-creator"],
+      ["team"]
+    ],
+    "critical_skills": ["interview-skills", "github-kb"],
+    "independent_skills": ["pptx", "skill-creator"]
+  }
+}

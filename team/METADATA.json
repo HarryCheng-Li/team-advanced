@@ -1,0 +1,43 @@
+{
+  "name": "team",
+  "version": "2.0.0",
+  "displayName": "Agent Team 自动化编排",
+  "description": "多 Agent 协作技能，自动分析任务需求，组建团队，分配任务并监控进度",
+  "maturity": "established",
+  "keywords": ["team", "agent", "orchestration", "multi-agent", "coordination"],
+  "category": "development",
+  "author": "harry",
+  "created": "2025-01-01",
+  "updated": "2026-02-16",
+  "dependencies": {
+    "skills": ["interview-skills", "github-kb"],
+    "mcp_servers": [],
+    "tools": ["Task", "TaskCreate", "TaskUpdate", "TaskList", "TaskGet", "SendMessage", "TeamCreate", "TeamDelete", "Skill"]
+  },
+  "capabilities": {
+    "triggers": ["/team", "/team --quick", "/team --full", "Agent Team", "组建团队", "创建团队"],
+    "tools_used": ["Task", "Read", "Write", "Edit", "Skill", "WebSearch"],
+    "agent_types": ["general-purpose", "Plan", "Explore", "Bash"],
+    "modes": ["quick", "standard", "full"]
+  },
+  "testing": {
+    "coverage": 85,
+    "last_tested": null,
+    "test_cases": 0,
+    "passing": 0,
+    "failing": 0,
+    "skipped": 0
+  },
+  "security": {
+    "permissions": ["filesystem", "network"],
+    "data_access": "read-write",
+    "sandbox_required": false
+  },
+  "metrics": {
+    "avg_tokens": 2500,
+    "avg_latency_ms": null,
+    "success_rate": null
+  },
+  "phases": ["Phase 0: 技术尽调", "Phase 1: 需求澄清", "Phase 2: 深度搜索", "Phase 3: 架构决策", "Phase 4: 团队执行", "Phase 5: 用户验收", "Phase 6: 交付说明"],
+  "roles": ["product-owner", "user-translator", "qa-verifier", "tech-scout", "repo-analyst", "security-reviewer", "code-reviewer", "backend-developer", "frontend-developer", "database-designer", "test-engineer", "architect", "tech-lead", "bug-hunter", "fix-implementer", "devops-engineer"]
+}

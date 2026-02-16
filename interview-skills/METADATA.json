@@ -1,0 +1,49 @@
+{
+  "name": "interview-skills",
+  "version": "2.0.0",
+  "displayName": "需求访谈技能",
+  "description": "多轮访谈技能，在实施前进行深入的需求发现和澄清",
+  "maturity": "established",
+  "keywords": ["interview", "requirements", "discovery", "clarification", "socratic"],
+  "category": "productivity",
+  "author": "harry",
+  "created": "2025-01-01",
+  "updated": "2026-02-16",
+  "dependencies": {
+    "skills": [],
+    "mcp_servers": [],
+    "tools": ["Read", "Write", "AskUserQuestion"]
+  },
+  "capabilities": {
+    "triggers": ["/interview", "interview", "需求澄清", "需求访谈"],
+    "tools_used": ["Read", "Write", "AskUserQuestion"],
+    "agent_types": ["general-purpose"],
+    "modes": ["feature", "bug", "think", "workflow"]
+  },
+  "testing": {
+    "coverage": 75,
+    "last_tested": null,
+    "test_cases": 0,
+    "passing": 0,
+    "failing": 0,
+    "skipped": 0
+  },
+  "security": {
+    "permissions": ["filesystem"],
+    "data_access": "read-write",
+    "sandbox_required": false
+  },
+  "metrics": {
+    "avg_tokens": 2000,
+    "avg_latency_ms": null,
+    "success_rate": null
+  },
+  "features": {
+    "user_type_detection": true,
+    "blind_spot_module": true,
+    "smart_termination": true,
+    "priority_classification": true,
+    "quick_mode": true,
+    "due_diligence_input": true
+  }
+}

@@ -1,0 +1,50 @@
+# GitHub Knowledge Base
+
+> 本地 GitHub 仓库知识库
+> 位置: {kb_path}
+> 创建时间: {created_at}
+
+## 配置
+
+- **知识库根目录**: `{kb_path}`
+- **管理脚本**: `~/.claude/skills/github-kb/scripts/manage_kb.py`
+
+## 仓库列表
+
+| 仓库名 | 一句话摘要 | 本地路径 |
+|--------|-----------|----------|
+{repos}
+
+## 使用说明
+
+### 添加新仓库
+
+```bash
+# 方式 1: 使用管理脚本
+python ~/.claude/skills/github-kb/scripts/manage_kb.py add {kb_path} \
+    --name "仓库名" \
+    --summary "一句话描述" \
+    --local-path "{kb_path}/仓库名"
+
+# 方式 2: 直接编辑此文件
+# 在表格中添加新行: `| 仓库名 | 摘要 | 路径 |`
+```
+
+### 查询仓库
+
+```bash
+python ~/.claude/skills/github-kb/scripts/manage_kb.py find {kb_path} --query "关键词"
+```
+
+### 列出所有仓库
+
+```bash
+python ~/.claude/skills/github-kb/scripts/manage_kb.py list {kb_path}
+```
+
+## 维护指南
+
+- 新增仓库后立即更新此文件
+- 删除本地仓库时，同步删除表格中的记录
+- 定期运行 `git pull` 更新各仓库
+- 摘要控制在 50 字以内，保持简洁

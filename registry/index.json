@@ -1,0 +1,91 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-02-16",
+  "description": "Claude Code Skill Registry Index",
+  "skills": [
+    {
+      "name": "team",
+      "path": "~/.claude/skills/team",
+      "version": "2.0.0",
+      "displayName": "Agent Team 自动化编排",
+      "maturity": "established",
+      "status": "active",
+      "category": "development",
+      "dependencies": ["interview-skills", "github-kb"],
+      "capabilities": ["multi-agent", "orchestration", "team-coordination"],
+      "triggers": ["/team", "/team --quick", "/team --full"]
+    },
+    {
+      "name": "pptx",
+      "path": "~/.claude/skills/pptx",
+      "version": "2.0.0",
+      "displayName": "PPTX 演示文稿处理",
+      "maturity": "established",
+      "status": "active",
+      "category": "productivity",
+      "dependencies": [],
+      "capabilities": ["presentation", "slides", "qa-learning"],
+      "triggers": [".pptx", "presentation", "slides", "deck"]
+    },
+    {
+      "name": "interview-skills",
+      "path": "~/.claude/skills/interview-skills",
+      "version": "2.0.0",
+      "displayName": "需求访谈技能",
+      "maturity": "established",
+      "status": "active",
+      "category": "productivity",
+      "dependencies": [],
+      "capabilities": ["requirements-discovery", "socratic-questioning", "user-type-detection"],
+      "triggers": ["/interview"]
+    },
+    {
+      "name": "github-kb",
+      "path": "~/.claude/skills/github-kb",
+      "version": "1.2.0",
+      "displayName": "GitHub 知识库管理",
+      "maturity": "stable",
+      "status": "active",
+      "category": "development",
+      "dependencies": [],
+      "capabilities": ["repository-management", "knowledge-base", "team-integration"],
+      "triggers": ["/github-kb", "github", "repository"]
+    },
+    {
+      "name": "skill-creator",
+      "path": "~/.claude/skills/skill-creator",
+      "version": "1.0.0",
+      "displayName": "Skill 创建向导",
+      "maturity": "stable",
+      "status": "active",
+      "category": "meta",
+      "dependencies": [],
+      "capabilities": ["skill-creation", "templates"],
+      "triggers": ["/skill-creator"]
+    }
+  ],
+  "categories": {
+    "development": ["team", "github-kb"],
+    "productivity": ["pptx", "interview-skills"],
+    "meta": ["skill-creator"]
+  },
+  "dependency_graph": {
+    "team": ["interview-skills", "github-kb"],
+    "pptx": [],
+    "interview-skills": [],
+    "github-kb": [],
+    "skill-creator": []
+  },
+  "statistics": {
+    "total_skills": 5,
+    "by_maturity": {
+      "established": 3,
+      "stable": 2
+    },
+    "by_category": {
+      "development": 2,
+      "productivity": 2,
+      "meta": 1
+    }
+  }
+}

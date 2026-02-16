@@ -1,0 +1,49 @@
+{
+  "name": "github-kb",
+  "version": "1.2.0",
+  "displayName": "GitHub 知识库管理",
+  "description": "本地 GitHub 仓库知识库，管理克隆的仓库并提供查询分析能力",
+  "maturity": "stable",
+  "keywords": ["github", "repository", "knowledge-base", "clone", "search"],
+  "category": "development",
+  "author": "harry",
+  "created": "2025-01-01",
+  "updated": "2026-02-16",
+  "dependencies": {
+    "skills": [],
+    "mcp_servers": ["mcp__zread__search_doc", "mcp__zread__read_file"],
+    "tools": ["Read", "Bash", "Glob", "Grep"]
+  },
+  "capabilities": {
+    "triggers": ["/github-kb", "github", "仓库", "clone", "repository"],
+    "tools_used": ["Read", "Bash", "Glob", "Grep"],
+    "agent_types": ["general-purpose", "Explore"],
+    "modes": []
+  },
+  "testing": {
+    "coverage": 60,
+    "last_tested": null,
+    "test_cases": 0,
+    "passing": 0,
+    "failing": 0,
+    "skipped": 0
+  },
+  "security": {
+    "permissions": ["filesystem", "network"],
+    "data_access": "read-only",
+    "sandbox_required": false
+  },
+  "metrics": {
+    "avg_tokens": 800,
+    "avg_latency_ms": null,
+    "success_rate": null
+  },
+  "integration": {
+    "team_skill": true,
+    "provides": ["find", "clone", "list", "analyze"]
+  },
+  "storage": {
+    "path": "~/github",
+    "configurable": true
+  }
+}
