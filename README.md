@@ -1,5 +1,9 @@
 # Team Advanced
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub release](https://img.shields.io/github/v/release/HarryCheng-Li/team-advanced?include_prereleases)](https://github.com/HarryCheng-Li/team-advanced/releases)
+[![GitHub stars](https://img.shields.io/github/stars/HarryCheng-Li/team-advanced?style=social)](https://github.com/HarryCheng-Li/team-advanced/stargazers)
+
 > Agent Team 自动化编排技能集 - Claude Code Skills Collection
 
 ## 概述
@@ -107,15 +111,27 @@ Team Skill v2.0.0
 5. **用户验收** - 完成后从用户角度验收
 6. **通俗沟通** - 用用户能理解的语言沟通
 
+## 安装
+
+将 Skills 复制到 Claude Code 配置目录：
+
+```bash
+# 克隆仓库
+git clone https://github.com/HarryCheng-Li/team-advanced.git
+
+# 复制 Skills 到 Claude 配置目录
+cp -r team-advanced/team ~/.claude/skills/
+cp -r team-advanced/interview-skills ~/.claude/skills/
+cp -r team-advanced/github-kb ~/.claude/skills/
+```
+
 ## 版本历史
 
-### v2.0.0 (2026-02-16)
-- 新增 tech-scout 技术尽调角色
-- Phase 合并简化 (10 → 7)
-- 新增快速/标准/完整三种模式
-- Interview 新增用户类型检测和盲点模块
-- GitHub KB 与 Team Skill 集成
-- Skill Registry 标准化元数据
+详见 [CHANGELOG.md](./CHANGELOG.md)
+
+## 贡献
+
+欢迎提交 Issue 和 Pull Request！
 
 ## 作者
 
@@ -123,4 +139,4 @@ Harry Cheng
 
 ## 许可证
 
-MIT License
+[MIT License](./LICENSE)
