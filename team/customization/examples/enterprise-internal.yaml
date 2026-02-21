@@ -1,0 +1,41 @@
+# 示例：企业内部系统定制配置
+
+agents:
+  product-owner:
+    display_name: "业务代表"
+    persona:
+      memories:
+        - "企业内部系统"
+        - "用户是公司员工"
+        - "稳定性和安全性优先"
+        - "需要审计日志"
+
+  architect:
+    persona:
+      principles:
+        - "安全第一"
+        - "稳定优先"
+        - "合规性必须"
+
+  backend-developer:
+    persona:
+      memories:
+        - "使用公司内部框架"
+        - "需要对接内部 SSO"
+        - "敏感数据需要加密"
+
+workflow:
+  extra_verification:
+    - name: "security_scan"
+      command: "npm run security:scan"
+      threshold: 100
+    - name: "compliance_check"
+      command: "npm run compliance:check"
+      threshold: 100
+
+notifications:
+  error:
+    enabled: true
+    immediate: true
+    recipients:
+      - "security-team@company.com"

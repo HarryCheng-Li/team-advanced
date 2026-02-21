@@ -1,0 +1,85 @@
+============================================================
+Team Skill Health Check 测试套件
+============================================================
+
+[TEST] 模块导出完整性...
+  ✅ PASS: 模块导出完整性
+
+[TEST] 配置参数正确性...
+  ✅ PASS: 配置参数正确性
+
+[TEST] 启动健康检查循环...
+[Health Check] 启动健康检查循环，团队: test-team-health-check
+[Health Check] 检查间隔: 5秒
+[Health Check] MCP超时阈值: 30秒
+[Health Check] MCP卡住阈值: 60秒
+[Health Check] 停止健康检查循环
+[Health Check] 健康检查已停止
+  ✅ PASS: 启动健康检查循环
+
+[TEST] 成员注册功能...
+[Health Check] 注册新成员: executor-1
+  ✅ PASS: 成员注册功能
+
+[TEST] 更新成员状态...
+  ✅ PASS: 更新成员状态
+
+[TEST] MCP 调用注册...
+[Health Check] 成员 executor-1 开始 MCP 调用: read_file
+  ✅ PASS: MCP 调用注册
+
+[TEST] MCP 调用结束...
+  ✅ PASS: MCP 调用结束
+
+[TEST] 消息发送功能...
+[Health Check] 消息已发送到队列: health_check -> executor-1
+  ✅ PASS: 消息发送功能
+
+[TEST] 健康报告生成...
+  ✅ PASS: 健康报告生成
+
+[TEST] 成员注销功能...
+[Health Check] 注销成员: executor-1
+  ✅ PASS: 成员注销功能
+
+[TEST] 进度停滞检测...
+[Health Check] 启动健康检查循环，团队: test-team-health-check
+[Health Check] 检查间隔: 1秒
+[Health Check] MCP超时阈值: 30秒
+[Health Check] MCP卡住阈值: 60秒
+[Health Check] 注册新成员: executor-slow
+[Health Check] 停止健康检查循环
+[Health Check] 健康检查已停止
+[Health Check] 注销成员: executor-slow
+  ✅ PASS: 进度停滞检测
+
+[TEST] 空闲状态检测...
+[Health Check] 注册新成员: executor-idle
+[Health Check] 注销成员: executor-idle
+  ✅ PASS: 空闲状态检测
+
+[TEST] 质量检查触发（50% 进度）...
+[Health Check] 注册新成员: executor-quality
+[Health Check] 注销成员: executor-quality
+  ✅ PASS: 质量检查触发（50% 进度）
+
+[TEST] 获取状态信息...
+  ✅ PASS: 获取状态信息
+
+[TEST] 停止健康检查循环...
+[Health Check] 启动健康检查循环，团队: test-team-health-check
+[Health Check] 检查间隔: 5秒
+[Health Check] MCP超时阈值: 30秒
+[Health Check] MCP卡住阈值: 60秒
+[Health Check] 停止健康检查循环
+[Health Check] 健康检查已停止
+  ✅ PASS: 停止健康检查循环
+
+============================================================
+测试报告
+============================================================
+通过: 15
+失败: 0
+总计: 15
+
+✅ 所有测试通过！

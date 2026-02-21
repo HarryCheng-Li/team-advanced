@@ -1,0 +1,306 @@
+# Team Skill 定制化配置 Schema
+
+## 概述
+
+定制化系统允许用户自定义 Agent 的行为、外观和记忆，使团队更贴合项目需求。
+
+## 配置文件位置
+
+```yaml
+# 项目级: .claude/customize.yaml
+# 用户级: ~/.claude/customize.yaml
+```
+
+## Schema 定义
+
+```yaml
+# customize-schema.yaml
+
+# 全局设置
+global:
+  # 默认语言
+  language: zh-CN
+
+  # 默认模式 (quick | standard | full)
+  default_mode: standard
+
+  # 进度报告频率 (秒)
+  report_frequency: 60
+
+# Agent 定制
+agents:
+  # 用户服务角色
+  product-owner:
+    # 显示名称
+    display_name: "Mary"
+
+    # 人格定制
+    persona:
+      # 沟通风格
+      communication_style: "professional_empathetic"  # professional_empathetic | clear_friendly | devil_advocate | pragmatic_efficient
+
+      # 额外原则
+      principles:
+        - "User first, always"
+        - "Quality over speed"
+
+      # 项目记忆（会被注入到 Agent 上下文）
+      memories:
+        - "项目使用 OAuth2 认证"
+        - "用户偏好简洁界面"
+        - "上线时间是第一优先级"
+
+    # 模型选择 (可覆盖默认)
+    model: sonnet  # opus | sonnet | haiku
+
+  user-translator:
+    display_name: "Paige"
+    persona:
+      communication_style: "clear_friendly"
+      translation_style: "analogy_first"  # analogy_first | direct | layered
+      memories:
+        - "用户是非技术人员"
+
+  qa-verifier:
+    display_name: "Quinn"
+    persona:
+      communication_style: "devil_advocate"
+      strictness: "high"  # high | medium | low
+      focus_areas:
+        - "user_experience"
+        - "edge_cases"
+
+  # 技术角色
+  architect:
+    display_name: "Winston"
+    persona:
+      communication_style: "rigorous_simplicity"
+      adr_template: "default"  # default | minimal | detailed
+      memories:
+        - "项目采用微服务架构"
+        - "使用 PostgreSQL 作为主数据库"
+
+  backend-developer:
+    display_name: "Amelia"
+    persona:
+      communication_style: "pragmatic_efficient"
+      code_style: "clean_code"  # clean_code | enterprise | minimal
+      testing_preference: "tdd"  # tdd | bdd | after
+
+  frontend-developer:
+    display_name: "Alex"
+    persona:
+      communication_style: "detail_oriented"
+      css_framework: "tailwind"  # tailwind | css-modules | styled-components
+      testing_library: "testing-library"
+
+  tech-lead:
+    display_name: "John"
+    persona:
+      communication_style: "result_oriented"
+      decision_framework: "weighted"  # weighted | consensus | authoritarian
+      report_frequency: "daily"
+
+  database-designer:
+    display_name: "David"
+    persona:
+      communication_style: "systematic_precise"
+
+  test-engineer:
+    display_name: "Tessa"
+    persona:
+      communication_style: "thorough_systematic"
+      coverage_target: 90
+
+  # 研究角色
+  tech-scout:
+    display_name: "Scout"
+    persona:
+      communication_style: "curious_concise"
+      search_depth: 3
+      result_limit: 20
+      time_range: "1y"  # 1y | 2y | all
+
+  repo-analyst:
+    display_name: "Robin"
+    persona:
+      communication_style: "analytical_structured"
+
+  # 协调角色
+  coordinator:
+    display_name: "Coordinator"
+    persona:
+      communication_style: "professional_clear"
+
+  supervisor:
+    display_name: "Supervisor"
+    check_frequency: 30  # 秒
+    thresholds:
+      progress_stale: 120  # 秒
+      idle_too_long: 120   # 秒
+      error_count: 3
+
+# Party Mode 定制
+party_mode:
+  # 预设讨论模板
+  presets:
+    security_review:
+      name: "安全审查讨论"
+      roles:
+        - security-reviewer
+        - architect
+        - backend-developer
+      max_turns: 10
+
+    architecture_decision:
+      name: "架构决策讨论"
+      roles:
+        - architect
+        - tech-lead
+        - product-owner
+      max_turns: 15
+
+  # 默认参与角色
+  default_roles:
+    - architect
+    - product-owner
+    - tech-lead
+
+# 规模自适应定制
+scale_adaptation:
+  # 自定义级别
+  custom_levels:
+    - name: "hotfix"
+      stories: 1
+      flow: "quick"
+      time: "15min"
+
+  # 级别判断规则覆盖
+  level_rules:
+    # 包含 "hotfix" 关键词强制使用 Level 0
+    hotfix_keywords:
+      - "紧急修复"
+      - "hotfix"
+      - "生产问题"
+
+# 流程定制
+workflow:
+  # 跳过的阶段
+  skip_phases: []  # 例如: ["phase-03-deep-search"]
+
+  # 额外的验证阶段
+  extra_verification:
+    - name: "performance_test"
+      command: "npm run test:perf"
+      threshold: 95
+
+# 通知设置
+notifications:
+  # 进度通知
+  progress:
+    enabled: true
+    frequency: 60  # 秒
+
+  # 完成通知
+  completion:
+    enabled: true
+    include_summary: true
+
+  # 错误通知
+  error:
+    enabled: true
+    immediate: true
+
+# 记忆持久化
+memory:
+  # 组织记忆
+  organizational:
+    enabled: true
+    location: ".claude/memory/organizational"
+
+  # 项目知识
+  project:
+    enabled: true
+    location: ".claude/memory/project"
+
+  # Agent 经验
+  agent_experiences:
+    enabled: true
+    location: ".claude/memory/agents"
+```
+
+## 使用示例
+
+### 基础定制
+
+```yaml
+# .claude/customize.yaml
+
+agents:
+  product-owner:
+    display_name: "产品经理"
+    persona:
+      memories:
+        - "这是一个电商项目"
+        - "目标用户是年轻消费者"
+```
+
+### 团队风格定制
+
+```yaml
+# .claude/customize.yaml
+
+agents:
+  architect:
+    persona:
+      principles:
+        - "简洁优于复杂"
+        - "过早优化是万恶之源"
+
+  backend-developer:
+    persona:
+      code_style: "enterprise"
+      testing_preference: "tdd"
+
+  frontend-developer:
+    persona:
+      css_framework: "css-modules"
+```
+
+### 项目记忆注入
+
+```yaml
+# .claude/customize.yaml
+
+agents:
+  product-owner:
+    persona:
+      memories:
+        - "项目使用 Next.js 14"
+        - "数据库是 PostgreSQL"
+        - "认证使用 NextAuth.js"
+        - "部署在 Vercel"
+
+  backend-developer:
+    persona:
+      memories:
+        - "API 路由在 /app/api/"
+        - "使用 Prisma ORM"
+        - "遵循 RESTful 规范"
+```
+
+## 配置优先级
+
+```yaml
+优先级 (从高到低):
+  1. 命令行参数
+  2. 项目级配置 (.claude/customize.yaml)
+  3. 用户级配置 (~/.claude/customize.yaml)
+  4. 默认值
+```
+
+## 相关参考
+
+- **Persona 文件**: [personas/](../personas/)
+- **规模自适应**: [references/scale-adaptation.md](../references/scale-adaptation.md)
+- **Party Mode**: [party-mode/party-mode.md](../party-mode/party-mode.md)

@@ -1,0 +1,87 @@
+{
+  "hooks": [
+    {
+      "name": "session-start",
+      "trigger": "SessionStart",
+      "script": "./session-start.js",
+      "description": "会话开始时加载上下文",
+      "priority": 100
+    },
+    {
+      "name": "session-end",
+      "trigger": "SessionEnd",
+      "script": "./session-end.js",
+      "description": "会话结束时保存状态",
+      "priority": 50
+    },
+    {
+      "name": "pre-compact",
+      "trigger": "PreCompact",
+      "script": "./pre-compact.js",
+      "description": "压缩前保存重要上下文",
+      "priority": 100
+    },
+    {
+      "name": "post-tool-use",
+      "trigger": "PostToolUse",
+      "matcher": "tool == \"Edit\"",
+      "script": "./post-tool-use.js",
+      "description": "编辑文件后检查代码质量",
+      "priority": 100
+    },
+    {
+      "name": "evaluate-session",
+      "trigger": "Stop",
+      "script": "./evaluate-session.js",
+      "description": "会话结束时提取模式到 instincts",
+      "priority": 200
+    },
+    {
+      "name": "health-check",
+      "trigger": "Periodic",
+      "interval": 30,
+      "script": "./health-check.js",
+      "description": "每30秒检查团队成员健康状态",
+      "priority": 100
+    },
+    {
+      "name": "team-created",
+      "trigger": "TeamCreate",
+      "script": "./team-created.js",
+      "description": "团队创建时启动健康检查",
+      "priority": 50,
+      "dependsOn": ["health-check"]
+    },
+    {
+      "name": "team-deleted",
+      "trigger": "TeamDelete",
+      "script": "./team-deleted.js",
+      "description": "团队删除时停止健康检查",
+      "priority": 50,
+      "dependsOn": ["resource-monitor"]
+    },
+    {
+      "name": "resource-monitor",
+      "trigger": "Periodic",
+      "interval": 60,
+      "script": "./resource-monitor.js",
+      "description": "每60秒生成资源使用报告",
+      "priority": 200,
+      "dependsOn": ["health-check"]
+    }
+  ],
+  "libraries": [
+    {
+      "name": "saga-executor",
+      "path": "./saga-executor.js",
+      "description": "Saga模式事务管理器，支持多Agent协作的原子性操作",
+      "exports": ["SagaExecutor", "SagaBuilder", "SagaOrchestrator", "SAGA_STATUS", "STEP_STATUS"]
+    },
+    {
+      "name": "hook-orchestrator",
+      "path": "./hook-orchestrator.js",
+      "description": "Hook优先级管理和依赖解析器",
+      "exports": ["HookOrchestrator", "DependencyGraph", "HOOK_STATUS"]
+    }
+  ]
+}

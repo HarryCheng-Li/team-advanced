@@ -1,0 +1,44 @@
+# 示例：电商项目定制配置
+
+agents:
+  product-owner:
+    display_name: "产品经理"
+    persona:
+      memories:
+        - "这是一个电商项目"
+        - "目标用户是 18-35 岁年轻消费者"
+        - "移动端优先"
+        - "双十一是大促节点"
+
+  architect:
+    persona:
+      memories:
+        - "微服务架构，服务拆分合理"
+        - "使用 Kubernetes 部署"
+        - "数据库分库分表"
+
+  backend-developer:
+    persona:
+      memories:
+        - "核心服务: 用户、商品、订单、支付"
+        - "消息队列使用 RabbitMQ"
+        - "缓存使用 Redis Cluster"
+
+party_mode:
+  presets:
+    promotion_planning:
+      name: "大促规划讨论"
+      roles:
+        - product-owner
+        - tech-lead
+        - backend-developer
+        - devops-engineer
+      max_turns: 20
+
+scale_adaptation:
+  level_rules:
+    promotion_keywords:
+      - "双十一"
+      - "大促"
+      - "秒杀"
+    # 大促相关任务至少 Level 3

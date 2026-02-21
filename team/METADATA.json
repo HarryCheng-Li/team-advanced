@@ -1,28 +1,45 @@
 {
   "name": "team",
-  "version": "2.0.0",
+  "version": "6.0.0",
   "displayName": "Agent Team 自动化编排",
-  "description": "多 Agent 协作技能，自动分析任务需求，组建团队，分配任务并监控进度",
+  "description": "多 Agent 协作技能，自动分析任务需求，组建团队，分配任务并监控进度。v6.0 新增：Step-File 架构、Agent Persona 系统、对抗性审查、Party Mode、定制化系统、规模自适应",
   "maturity": "established",
-  "keywords": ["team", "agent", "orchestration", "multi-agent", "coordination"],
+  "keywords": [
+    "team",
+    "agent",
+    "orchestration",
+    "multi-agent",
+    "coordination",
+    "reliability",
+    "party-mode",
+    "personas",
+    "phases",
+    "hooks",
+    "rules",
+    "contexts",
+    "supervisor"
+  ],
   "category": "development",
   "author": "harry",
   "created": "2025-01-01",
-  "updated": "2026-02-16",
+  "updated": "2026-02-20",
   "dependencies": {
     "skills": ["interview-skills", "github-kb"],
     "mcp_servers": [],
     "tools": ["Task", "TaskCreate", "TaskUpdate", "TaskList", "TaskGet", "SendMessage", "TeamCreate", "TeamDelete", "Skill"]
   },
   "capabilities": {
-    "triggers": ["/team", "/team --quick", "/team --full", "Agent Team", "组建团队", "创建团队"],
+    "triggers": ["/team", "/team --quick", "/team --full", "/team --party", "Agent Team", "组建团队", "创建团队"],
     "tools_used": ["Task", "Read", "Write", "Edit", "Skill", "WebSearch"],
     "agent_types": ["general-purpose", "Plan", "Explore", "Bash"],
-    "modes": ["quick", "standard", "full"]
+    "modes": ["quick", "standard", "full"],
+    "party_mode": true,
+    "customization": true,
+    "scale_levels": 5
   },
   "testing": {
     "coverage": 85,
-    "last_tested": null,
+    "last_tested": "2026-02-20",
     "test_cases": 0,
     "passing": 0,
     "failing": 0,
@@ -36,8 +53,92 @@
   "metrics": {
     "avg_tokens": 2500,
     "avg_latency_ms": null,
-    "success_rate": null
+    "success_rate": null,
+    "resource_monitoring": {
+      "enabled": true,
+      "token_tracking": true,
+      "mcp_tracking": true,
+      "cost_tracking": true,
+      "budget_management": true,
+      "report_interval_seconds": 60
+    },
+    "budget": {
+      "default_limit_usd": 10.0,
+      "warning_threshold": 0.8,
+      "critical_threshold": 0.95,
+      "currency": "USD"
+    }
   },
-  "phases": ["Phase 0: 技术尽调", "Phase 1: 需求澄清", "Phase 2: 深度搜索", "Phase 3: 架构决策", "Phase 4: 团队执行", "Phase 5: 用户验收", "Phase 6: 交付说明"],
-  "roles": ["product-owner", "user-translator", "qa-verifier", "tech-scout", "repo-analyst", "security-reviewer", "code-reviewer", "backend-developer", "frontend-developer", "database-designer", "test-engineer", "architect", "tech-lead", "bug-hunter", "fix-implementer", "devops-engineer"]
+  "phases": [
+    "Phase 0: 查询Instincts",
+    "Phase 1: 技术尽调",
+    "Phase 2: 需求澄清+锁定",
+    "Phase 3: 深度搜索",
+    "Phase 4: 架构决策",
+    "Phase 5: 团队执行",
+    "Phase 5.5: 7阶段验证",
+    "Phase 6: 用户验收",
+    "Phase 7: 交付说明",
+    "Phase 8: 持续学习"
+  ],
+  "roles": [
+    "coordinator",
+    "supervisor",
+    "product-owner",
+    "user-translator",
+    "qa-verifier",
+    "tech-scout",
+    "repo-analyst",
+    "security-reviewer",
+    "code-reviewer",
+    "test-coverage-reviewer",
+    "backend-developer",
+    "frontend-developer",
+    "database-designer",
+    "test-engineer",
+    "architect",
+    "tech-lead",
+    "bug-hunter",
+    "fix-implementer",
+    "devops-engineer"
+  ],
+  "personas": {
+    "coordinator": "Coordinator",
+    "supervisor": "Supervisor",
+    "product-owner": "Mary Chen",
+    "user-translator": "Paige Lin",
+    "qa-verifier": "Quinn Zhang",
+    "architect": "Winston Lee",
+    "tech-lead": "John Park",
+    "backend-developer": "Amelia Wang",
+    "frontend-developer": "Alex Kim",
+    "database-designer": "David Chen",
+    "test-engineer": "Tessa Zhang",
+    "tech-scout": "Scout",
+    "repo-analyst": "Robin"
+  },
+  "v6_features": [
+    "Step-File 架构 (独立 Phase 文件)",
+    "Agent Persona 系统 (角色人格化)",
+    "对抗性审查 (强制找问题)",
+    "Party Mode (多 Agent 讨论)",
+    "定制化系统 (.customize.yaml)",
+    "规模自适应 (五级系统)"
+  ],
+  "v5_features": [
+    "三角色架构 (Coordinator/Executor/Supervisor)",
+    "质量优于速度原则",
+    "成员健康检查机制",
+    "MCP 超时和强制终止机制"
+  ],
+  "v4_features": [
+    "需求锁定机制",
+    "7阶段增强验证",
+    "置信度量化",
+    "组织记忆库",
+    "角色权限矩阵",
+    "通信协议",
+    "回滚恢复系统",
+    "非技术用户友好模式"
+  ]
 }

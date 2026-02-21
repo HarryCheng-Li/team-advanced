@@ -1,0 +1,21 @@
+{
+  "name": "hook-orchestrator-tests",
+  "version": "1.0.0",
+  "description": "Tests for Hook Orchestrator",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true,
+    "collectCoverageFrom": [
+      "../hook-orchestrator.js"
+    ],
+    "coverageDirectory": "./coverage"
+  }
+}
